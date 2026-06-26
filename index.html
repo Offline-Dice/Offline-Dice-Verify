@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Offline Dice - Verify</title>
+<style>
+html,body{
+height:100%;
+margin:0;
+font-family:Arial,sans-serif;
+background:
+radial-gradient(circle at 50px 50px,#141414 0 18px,transparent 19px),
+repeating-linear-gradient(45deg,#0a0a0a 0,#0a0a0a 18px,#141414 18px,#141414 30px);
+background-size:120px 120px,60px 60px;
+background-color:#050505;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+.card{
+width:430px;
+background:rgba(15,15,15,.92);
+border:2px solid rgba(255,255,255,.25);
+border-radius:18px;
+padding:35px;
+text-align:center;
+color:#fff;
+box-shadow:0 0 40px rgba(0,0,0,.55);
+}
+.logo{font-size:42px}
+h1{
+margin:10px 0;
+font-size:44px;
+color:white;
+text-shadow:0 0 10px gold;
+}
+p{color:#ddd}
+.row{display:flex;gap:10px;margin-top:25px}
+input{
+flex:1;
+padding:16px;
+border:none;
+border-radius:10px;
+font-size:22px;
+font-weight:bold;
+text-align:center;
+color:#2255aa;
+}
+button{
+background:#ffcb24;
+border:none;
+border-radius:10px;
+padding:0 24px;
+font-size:22px;
+font-weight:bold;
+cursor:pointer;
+}
+button:hover{filter:brightness(1.05)}
+#result{margin-top:20px;font-size:20px;font-weight:bold}
+a{display:inline-block;margin-top:20px;color:#ffd400;text-decoration:none;font-weight:bold}
+</style>
+</head>
+<body>
+<div class="card">
+<div class="logo">🎲</div>
+<h1>VERIFY ROLL</h1>
+<p>Enter the Result ID</p>
+
+<div class="row">
+<input id="code" placeholder="EHH27W">
+<button onclick="verify()">VERIFY</button>
+</div>
+
+<div id="result"></div>
+
+<a href="https://offline-dice.de" target="_blank">← BACK TO OFFLINE DICE</a>
+</div>
+
+<script>
+const valid={EHH27W:1,OD7X9A:1,DICE24:1};
+function verify(){
+ const c=document.getElementById("code").value.trim().toUpperCase();
+ const r=document.getElementById("result");
+ if(valid[c]){
+   r.style.color="#7CFF7C";
+   r.textContent="✓ VALID RESULT ID";
+ }else{
+   r.style.color="#FF8A8A";
+   r.textContent="✗ INVALID RESULT ID";
+ }
+}
+</script>
+</body>
+</html>
